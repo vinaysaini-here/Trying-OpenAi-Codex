@@ -1,0 +1,158 @@
+﻿:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+  background: #f4f4f1;
+  color: #1f1f1b;
+  --board-size: min(78vw, 480px);
+  --cell-gap: 2px;
+  --border-color: #cfcfc5;
+  --panel-bg: #ffffff;
+  --snake-color: #2f6f3e;
+  --snake-head: #1f512c;
+  --food-color: #c44d39;
+  --empty-color: #ececdf;
+  --button-bg: #efefe8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.game-shell {
+  width: min(100%, 560px);
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+.game-header,
+.status-row,
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.game-header {
+  margin-bottom: 16px;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.subtitle,
+.help,
+#status {
+  color: #5b5b53;
+  font-size: 0.95rem;
+}
+
+.scoreboard {
+  text-align: right;
+  min-width: 72px;
+}
+
+.scoreboard span {
+  display: block;
+  font-size: 0.85rem;
+  color: #5b5b53;
+}
+
+.status-row {
+  margin-bottom: 16px;
+}
+
+.actions,
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  color: inherit;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e5e5dc;
+}
+
+.board {
+  width: var(--board-size);
+  height: var(--board-size);
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  gap: var(--cell-gap);
+  padding: var(--cell-gap);
+  background: var(--border-color);
+  margin: 0 auto;
+}
+
+.cell {
+  background: var(--empty-color);
+}
+
+.cell.snake {
+  background: var(--snake-color);
+}
+
+.cell.head {
+  background: var(--snake-head);
+}
+
+.cell.food {
+  background: var(--food-color);
+}
+
+.controls {
+  margin: 16px 0 12px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-button {
+  min-width: 84px;
+}
+
+@media (min-width: 721px) {
+  .controls {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 12px;
+  }
+
+  .game-shell {
+    padding: 16px;
+  }
+
+  .game-header,
+  .status-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
